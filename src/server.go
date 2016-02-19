@@ -67,7 +67,8 @@ func update(w http.ResponseWriter, r *http.Request) {
 func main() {
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 	logger = log.New(os.Stdout, "", log.LstdFlags|log.Llongfile)
+	println("listen 0.0.0.0:8888")
 	http.HandleFunc("/api/graphviz", update)
 	http.HandleFunc("/", index)
-	http.ListenAndServe(":8888", nil)
+	http.ListenAndServe("0.0.0.0:8888", nil)
 }
